@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Suite</title>
+    <script>
+        (function () {
+            var results;
+            this.assert = function assert(value, desc) {
+                var li = document.createElement("li");
+                li.className = value ? "pass" : "fail";
+                li.appendChild(document.createTextNode(desc));
+                results.appendChild(li);
+                if (!value) {
+
+                    li.parentNode.parentNode.className = "fail";
+                }
+                return li;
+            };
+            this.test = function test(name, fn) {
+                results = document.getElementById("results");
+                results = assert(true, name).appendChild(
+                        document.createElement("ul"));
+                var t0 = performance.now();
+                fn();
+                var t1 = performance.now();
+                results = assert(true, "Test took " + (t1 - t0) + " milliseconds.").appendChild(
+                        document.createElement("ul"));
+            };
+        })();
+        window.onload = function () {
+            var number_of_runs = 1000000;
+            var my_dict= [];
+            my_dict["elem_1"] = 0;
+            test("bracket notation", function () {
+                for(var i = 0; i < number_of_runs; i++){
+                    my_dict["elem_1"] = i;
+                }
+                assert(true, "Test finished");
+            });
+            test("dot notation", function () {
+                for(var i = 0; i < number_of_runs; i++){
+                    my_dict.elem_1 = i;
+                }
+                assert(true, "Test finished");
+            });
+        };
+    </script>
+    <style>
+        #results li.pass {
+            color: green;
+        }
+
+        #results li.fail {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tbody id="items"></tbody>
+</table>
+<ul id="results"></ul>
+</body>
+</html>
