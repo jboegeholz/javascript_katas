@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Convert</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+<style>
+    .input-group-addon {
+        min-width: 100px;
+        text-align: left;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            RGB (0..255)
+        </div>
+        <div class="col">
+            CMYK (0..100%)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="input-group">
+                <span class="input-group-addon">Red</span>
+                <input type="number" class="form-control" placeholder="0" min="0" max="255" id="red">
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group">
+                <span class="input-group-addon">Cyan</span>
+                <input type="text" class="form-control" placeholder="0" id="cyan">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="input-group">
+                <span class="input-group-addon">Green</span>
+                <input type="text" class="form-control" placeholder="0" id="green">
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group">
+                <span class="input-group-addon">Magenta</span>
+                <input type="text" class="form-control" placeholder="0" id="magenta">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="input-group">
+                <span class="input-group-addon">Blue</span>
+                <input type="text" class="form-control" placeholder="0" id="blue">
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group">
+                <span class="input-group-addon">Yellow</span>
+                <input type="text" class="form-control" placeholder="0" id="yellow">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col">
+            <div class="input-group">
+                <span class="input-group-addon">Black</span>
+                <input type="text" class="form-control" placeholder="0" id="black">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("input#red").keyup(calculate_cmyk);
+        $("input#green").keyup(calculate_cmyk);
+        $("input#blue").keyup(calculate_cmyk);
+    });
+    function calculate_rgb(){
+
+    }
+    function calculate_cmyk(){
+        var red = $("input#red").val();
+        var green = $("input#green").val();
+        var blue = $("input#blue").val();
+        console.log("Fetching RGB: " + red + green + blue);
+        var cyan = 0;
+        //calc cmyk
+        $("input#cyan").val(red);
+        $("input#green").val();
+        $("input#blue").val();
+    }
+</script>
+</body>
+</html>
