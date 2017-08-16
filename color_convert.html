@@ -78,24 +78,28 @@
     </div>
 </div>
 <script>
+    var $input_red = $("input#red");
+    var $input_green = $("input#green");
+    var $input_blue = $("input#blue");
+
     $(document).ready(function () {
-        $("input#red").keyup(calculate_cmyk);
-        $("input#green").keyup(calculate_cmyk);
-        $("input#blue").keyup(calculate_cmyk);
+        $input_red.keyup(calculate_cmyk);
+        $input_green.keyup(calculate_cmyk);
+        $input_blue.keyup(calculate_cmyk);
     });
     function calculate_rgb(){
 
     }
     function calculate_cmyk(){
-        var red = $("input#red").val();
-        var green = $("input#green").val();
-        var blue = $("input#blue").val();
+        var red = $input_red.val();
+        var green = $input_green.val();
+        var blue = $input_blue.val();
         console.log("Fetching RGB: " + red + green + blue);
-        var cyan = 0;
+        var cyan = (1 - ( red / 255 )) * 100;
         //calc cmyk
-        $("input#cyan").val(red);
-        $("input#green").val();
-        $("input#blue").val();
+        $input_red.val(cyan);
+        $input_green.val();
+        $input_blue.val();
     }
 </script>
 </body>
